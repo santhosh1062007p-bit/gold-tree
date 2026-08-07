@@ -12,7 +12,7 @@ import { formatDate } from '@/lib/utils';
 import { soundSystem } from '@/lib/soundSystem';
 
 const SESSION_KEY = 'ilt_admin_auth';
-const ADMIN_PASSWORD = 'santhosh106207';
+const ADMIN_PASSWORD = 'samy';
 
 interface AdminDashboardProps {
   onBackToKiosk: () => void;
