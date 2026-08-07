@@ -54,10 +54,10 @@ export const GoldenLeaf: React.FC<GoldenLeafProps> = ({
         }`}
       />
 
-      {/* Guest Name Hover Badge */}
+      {/* Guest Name Badge (Always Visible) */}
       {guestName && (
         <div
-          className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-30 pointer-events-none whitespace-nowrap px-3 py-1.5 rounded-full text-xs shadow-lg backdrop-blur-md border ${
+          className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-30 pointer-events-none whitespace-nowrap px-3 py-1.5 rounded-full text-[10px] shadow-lg backdrop-blur-md border ${
             isGreen
               ? 'bg-[#062419]/90 border-emerald-400/60 text-emerald-200 shadow-[0_0_15px_rgba(16,185,129,0.4)]'
               : 'bg-[#0F1420]/90 border-amber-400/60 text-amber-200 shadow-[0_0_15px_rgba(212,175,55,0.4)]'
