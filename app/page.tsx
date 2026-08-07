@@ -157,7 +157,7 @@ export default function KioskPage() {
         </div>
 
         {/* ── RIGHT SIDEBAR (Interactive Form Kiosk) ── */}
-        <div className="w-full lg:w-[40%] h-auto lg:h-full flex flex-col justify-center gap-6 z-20 overflow-y-auto max-h-[45vh] lg:max-h-full">
+        <div className="w-full lg:w-[40%] h-auto lg:h-full flex flex-col justify-center z-20">
           
           {/* INTERACTIVE KIOSK WORKFLOW PANEL */}
           <div className="glass-panel rounded-2xl p-6 border border-amber-500/40 shadow-2xl w-full flex flex-col justify-center min-h-[350px]">
@@ -202,10 +202,7 @@ export default function KioskPage() {
             )}
           </div>
 
-          {/* INSPIRATIONAL QUOTE */}
-          <div className="glass-panel rounded-2xl p-4 border border-amber-500/25 italic text-sm text-amber-200/90 font-serif leading-relaxed text-center shadow-lg mx-auto w-[90%]">
-            &ldquo;The best time to plant a tree was 20 years ago. The second best time is now.&rdquo;
-          </div>
+
         </div>
       </div>
 
