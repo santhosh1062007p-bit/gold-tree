@@ -206,14 +206,7 @@ export default function KioskPage() {
         </div>
       </div>
 
-      {/* ── 3. BOTTOM FOOTER RIBBON ── */}
-      <footer className="w-full h-8 md:h-10 z-40 bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 border-t border-amber-500/40 px-4 flex items-center justify-center text-center shadow-[0_-5px_20px_rgba(0,0,0,0.8)] shrink-0">
-        <div className="flex items-center gap-2 text-xs md:text-sm font-serif italic text-amber-200 tracking-wide">
-          <span>🌿</span>
-          <span>&ldquo;Alone we can do so little; together we can do so much.&rdquo; – Helen Keller</span>
-          <span>🌿</span>
-        </div>
-      </footer>
+
 
       {/* Guest Leaf Detail Modal */}
       {selectedGuestModal && (
