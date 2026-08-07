@@ -32,19 +32,22 @@ export const LegacyTree: React.FC<LegacyTreeProps> = ({
       {/* Container for 3D Tree Display */}
       <div className="relative z-10 w-full h-full max-h-full flex items-center justify-center p-2">
         
-        {/* 3D Tree Image with Dynamic Breathing & Sway Animation */}
-        <img
-          src="/golden-tree.png"
-          alt="3D Warm Brownish Metallic Tree"
-          className={`w-full h-full object-contain filter transition-all duration-700 select-none pointer-events-none brightness-[0.85] sepia-[0.4] hue-rotate-[-16deg] contrast-[1.12] tree-active-sway ${
-            isIlluminated
-              ? 'drop-shadow-[0_0_60px_rgba(212,175,55,0.95)] scale-[1.03] brightness-[0.98]'
-              : 'drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]'
-          }`}
-        />
+        {/* Tightly Wrapped Container for Tree & Leaves */}
+        <div className="relative flex items-center justify-center" style={{ maxHeight: '100%', maxWidth: '100%', height: '100%' }}>
+          
+          {/* 3D Tree Image with Dynamic Breathing & Sway Animation */}
+          <img
+            src="/golden-tree.png"
+            alt="3D Warm Brownish Metallic Tree"
+            className={`w-auto h-full max-w-full object-contain filter transition-all duration-700 select-none pointer-events-none brightness-[0.85] sepia-[0.4] hue-rotate-[-16deg] contrast-[1.12] tree-active-sway ${
+              isIlluminated
+                ? 'drop-shadow-[0_0_60px_rgba(212,175,55,0.95)] scale-[1.03] brightness-[0.98]'
+                : 'drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]'
+            }`}
+          />
 
-        {/* Dynamic Golden & Green Leaves Rendered at Anchor Coordinates */}
-        <div className="absolute inset-0 pointer-events-none">
+          {/* Dynamic Golden & Green Leaves Rendered at Anchor Coordinates */}
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           {guests.map((guest, index) => {
             const pos = guest.leafPosition;
             if (!pos) return null;
@@ -79,6 +82,7 @@ export const LegacyTree: React.FC<LegacyTreeProps> = ({
               </div>
             );
           })}
+        </div>
         </div>
 
         {/* Tree Base Inspirational Plaque (Matching Reference Design) */}
