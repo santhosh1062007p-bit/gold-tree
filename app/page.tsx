@@ -140,34 +140,15 @@ export default function KioskPage() {
           </span>
         </div>
 
-        {/* Right Corner: Triple A Association Emblem */}
-        <div className="flex items-center gap-3">
-          <div className="flex flex-col text-right hidden sm:flex">
-            <span className="text-xs font-black text-amber-300 tracking-wider">TRIPLE A ASSOCIATION</span>
-            <span className="text-[9px] text-emerald-400/80 font-mono">ADVANCE | ACT | ACHIEVE</span>
-          </div>
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-blue-900/60 to-amber-900/60 border border-amber-400/40 flex items-center justify-center shadow-lg font-black text-amber-300 text-lg">
-            AAA
-          </div>
-        </div>
+        {/* Right Corner Spacer to balance Header Title */}
+        <div className="w-20 md:w-24"></div>
       </header>
 
-      {/* ── 2. MAIN 3-COLUMN DASHBOARD STAGE ── */}
-      <div className="flex-1 w-full flex flex-col lg:flex-row items-center justify-between px-2 md:px-6 py-2 gap-3 overflow-hidden relative">
+      {/* ── 2. MAIN 2-COLUMN DASHBOARD STAGE ── */}
+      <div className="flex-1 w-full flex flex-col lg:flex-row items-center justify-between px-2 md:px-6 py-4 gap-6 overflow-hidden relative">
         
-        {/* ── LEFT SIDEBAR (Welcome, How to Sign, Quote) ── */}
-        <div className="w-full lg:w-[24%] h-auto lg:h-full flex flex-col justify-between gap-2.5 z-20 overflow-y-auto max-h-[35vh] lg:max-h-full">
-          
-
-
-          {/* Card 3: INSPIRATIONAL QUOTE */}
-          <div className="glass-panel rounded-2xl p-3.5 border border-amber-500/25 italic text-xs text-amber-200/90 font-serif leading-relaxed text-center shadow-lg">
-            &ldquo;The best time to plant a tree was 20 years ago. The second best time is now.&rdquo;
-          </div>
-        </div>
-
-        {/* ── CENTER STAGE: THE 3D GOLDEN TREE ── */}
-        <div className="w-full lg:w-[52%] h-[40vh] lg:h-full relative flex items-center justify-center z-10 p-1 md:p-4">
+        {/* ── LEFT STAGE: THE 3D GOLDEN TREE ── */}
+        <div className="w-full lg:w-[60%] h-[40vh] lg:h-full relative flex items-center justify-center z-10 p-1 md:p-4">
           <LegacyTree
             guests={guests}
             onSelectGuest={(g) => setSelectedGuestModal(g)}
@@ -175,13 +156,11 @@ export default function KioskPage() {
           />
         </div>
 
-        {/* ── RIGHT SIDEBAR (Recent Legacy, Interactive Form Kiosk, Event Details) ── */}
-        <div className="w-full lg:w-[24%] h-auto lg:h-full flex flex-col justify-between gap-2.5 z-20 overflow-y-auto max-h-[45vh] lg:max-h-full">
+        {/* ── RIGHT SIDEBAR (Interactive Form Kiosk) ── */}
+        <div className="w-full lg:w-[40%] h-auto lg:h-full flex flex-col justify-center gap-6 z-20 overflow-y-auto max-h-[45vh] lg:max-h-full">
           
-
-
-          {/* Card 2: INTERACTIVE KIOSK WORKFLOW PANEL */}
-          <div className="glass-panel rounded-2xl p-3 border border-amber-500/40 shadow-2xl flex-1 flex flex-col justify-center min-h-[220px]">
+          {/* INTERACTIVE KIOSK WORKFLOW PANEL */}
+          <div className="glass-panel rounded-2xl p-6 border border-amber-500/40 shadow-2xl w-full flex flex-col justify-center min-h-[350px]">
             {step === 'WELCOME' && (
               <WelcomeScreen
                 onBegin={handleBeginLegacy}
@@ -223,20 +202,9 @@ export default function KioskPage() {
             )}
           </div>
 
-          {/* Card 3: EVENT DETAILS */}
-          <div className="glass-panel rounded-2xl p-3 border border-amber-500/30 shadow-xl space-y-1.5 text-xs text-amber-200/90">
-            <div className="flex items-center gap-2">
-              <span className="text-amber-400">📅</span>
-              <span><strong>Date :</strong> 07 August 2026</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-emerald-400">📍</span>
-              <span><strong>Event :</strong> Triple A Association Inauguration</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-amber-300">🏫</span>
-              <span><strong>Place :</strong> NSCET Campus</span>
-            </div>
+          {/* INSPIRATIONAL QUOTE */}
+          <div className="glass-panel rounded-2xl p-4 border border-amber-500/25 italic text-sm text-amber-200/90 font-serif leading-relaxed text-center shadow-lg mx-auto w-[90%]">
+            &ldquo;The best time to plant a tree was 20 years ago. The second best time is now.&rdquo;
           </div>
         </div>
       </div>
