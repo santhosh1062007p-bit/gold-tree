@@ -18,10 +18,14 @@ export function allocateTreeAnchor(existingGuests: GuestRecord[]): AllocatedAnch
       .map((g) => g.anchorId)
   );
 
-  // 1. Search for first available predefined anchor
-  const availableAnchor = PREDEFINED_TREE_ANCHORS.find(
+  // 1. Get all available predefined anchors and pick one randomly to scatter leaves everywhere
+  const availableAnchors = PREDEFINED_TREE_ANCHORS.filter(
     (anchor) => !occupiedAnchorIds.has(anchor.id)
   );
+
+  const availableAnchor = availableAnchors.length > 0 
+    ? availableAnchors[Math.floor(Math.random() * availableAnchors.length)] 
+    : null;
 
   if (availableAnchor) {
     return {
