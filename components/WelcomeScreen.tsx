@@ -38,15 +38,15 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onBegin, guestCoun
         <p className="text-base md:text-xl font-light text-amber-100/90 tracking-wide">
           Every Signature Becomes a Permanent Institutional Legacy.
         </p>
-        <div className="flex justify-center items-center gap-2 text-xs md:text-sm text-amber-400/70 pt-2">
-          <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-          <span>
-            {guestCount === 0
-              ? 'YOUR LEGACY BEGINS HERE'
-              : `${guestCount} Distinguished ${guestCount === 1 ? 'Legacy' : 'Legacies'} Recorded`}
-          </span>
-          <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-        </div>
+        {guestCount > 0 && (
+          <div className="flex justify-center items-center gap-2 text-xs md:text-sm text-amber-400/70 pt-2">
+            <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
+            <span>
+              {`${guestCount} Distinguished ${guestCount === 1 ? 'Legacy' : 'Legacies'} Recorded`}
+            </span>
+            <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
+          </div>
+        )}
       </div>
 
       {/* Bottom: CTA Button */}
