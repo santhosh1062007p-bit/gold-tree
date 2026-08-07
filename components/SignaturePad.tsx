@@ -159,13 +159,9 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
   };
 
   return (
-    <div className="w-full h-full max-h-full flex items-center justify-center p-1 md:p-3 select-none">
-      <div
-        className="w-full max-w-xl glass-panel rounded-2xl border border-amber-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.8)] flex flex-col"
-        style={{ maxHeight: '100%' }}
-      >
+    <div className="w-full h-full flex flex-col select-none max-w-xl mx-auto">
         {/* Fixed Header */}
-        <div className="flex items-center justify-between border-b border-amber-500/20 px-6 py-3 flex-shrink-0">
+        <div className="flex items-center justify-between border-b border-amber-500/20 pb-4 mb-4 flex-shrink-0">
           <button
             onClick={() => {
               if (!isSubmitting) {
@@ -186,7 +182,7 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
         </div>
 
         {/* Content */}
-        <div className="flex flex-col flex-1 min-h-0 px-6 py-4 gap-4">
+        <div className="flex flex-col flex-1 min-h-0 gap-4">
           {/* Title */}
           <div className="text-center flex-shrink-0">
             <h2 className="text-2xl md:text-3xl font-extrabold gold-gradient-text">LEAVE YOUR SIGNATURE</h2>
@@ -237,7 +233,6 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
             </button>
           </div>
         </div>
-      </div>
     </div>
   );
 };

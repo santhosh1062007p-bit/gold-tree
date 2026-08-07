@@ -53,11 +53,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   };
 
   return (
-    <div className="w-full h-full max-h-full flex items-center justify-center p-1 md:p-3 select-none">
-      <div className="w-full max-w-xl glass-panel rounded-2xl border border-amber-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.8)] flex flex-col" style={{ maxHeight: '100%' }}>
-        
+    <div className="w-full h-full flex flex-col select-none max-w-xl mx-auto">
         {/* Fixed Header */}
-        <div className="flex items-center justify-between border-b border-amber-500/20 px-6 py-3 flex-shrink-0">
+        <div className="flex items-center justify-between border-b border-amber-500/20 pb-4 mb-4 flex-shrink-0">
           <button
             onClick={() => { soundSystem.playClick(); onBack(); }}
             type="button"
@@ -73,7 +71,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         </div>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto flex-1 px-6 py-4" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div className="overflow-y-auto flex-1" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div className="mb-4">
             <h2 className="text-2xl font-bold gold-gradient-text">Legacy Registration</h2>
             <p className="text-xs text-amber-200/70 mt-1">
@@ -200,7 +198,6 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             </div>
           </form>
         </div>
-      </div>
     </div>
   );
 };
