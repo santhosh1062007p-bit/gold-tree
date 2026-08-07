@@ -158,36 +158,7 @@ export default function KioskPage() {
         {/* ── LEFT SIDEBAR (Welcome, How to Sign, Quote) ── */}
         <div className="w-full lg:w-[24%] h-auto lg:h-full flex flex-col justify-between gap-2.5 z-20 overflow-y-auto max-h-[35vh] lg:max-h-full">
           
-          {/* Card 1: WELCOME */}
-          <div className="glass-panel rounded-2xl p-4 border border-amber-500/30 shadow-xl space-y-2">
-            <div className="inline-block px-4 py-1 rounded-full bg-emerald-900/80 border border-emerald-400/50 text-emerald-200 font-bold text-xs uppercase tracking-wider shadow-md">
-              WELCOME
-            </div>
-            <p className="text-xs text-amber-100/90 leading-relaxed font-light">
-              We invite you to leave your signature as a symbol of your support for innovation, creativity and the future of our students. Your signature will become a permanent part of our Innovation Tree.
-            </p>
-          </div>
 
-          {/* Card 2: HOW TO SIGN */}
-          <div className="glass-panel rounded-2xl p-4 border border-amber-500/30 shadow-xl space-y-2.5">
-            <div className="inline-block px-4 py-1 rounded-full bg-emerald-900/80 border border-emerald-400/50 text-emerald-200 font-bold text-xs uppercase tracking-wider shadow-md">
-              HOW TO SIGN
-            </div>
-            <ul className="space-y-2 text-xs text-amber-100/90">
-              <li className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 flex items-center justify-center font-bold text-[10px] shrink-0">1</span>
-                <span>Sign anywhere on the digital signature pad.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 flex items-center justify-center font-bold text-[10px] shrink-0">2</span>
-                <span>Your name, designation and date will appear with your signature.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 flex items-center justify-center font-bold text-[10px] shrink-0">3</span>
-                <span>Be a part of our innovation journey!</span>
-              </li>
-            </ul>
-          </div>
 
           {/* Card 3: INSPIRATIONAL QUOTE */}
           <div className="glass-panel rounded-2xl p-3.5 border border-amber-500/25 italic text-xs text-amber-200/90 font-serif leading-relaxed text-center shadow-lg">
@@ -207,32 +178,7 @@ export default function KioskPage() {
         {/* ── RIGHT SIDEBAR (Recent Legacy, Interactive Form Kiosk, Event Details) ── */}
         <div className="w-full lg:w-[24%] h-auto lg:h-full flex flex-col justify-between gap-2.5 z-20 overflow-y-auto max-h-[45vh] lg:max-h-full">
           
-          {/* Card 1: RECENT / EXAMPLE LEGACY PREVIEW */}
-          <div className="glass-panel rounded-2xl p-3.5 border border-amber-500/30 shadow-xl space-y-2">
-            <div className="flex items-center justify-between">
-              <div className="inline-block px-3 py-0.5 rounded-full bg-amber-900/60 border border-amber-400/50 text-amber-200 font-bold text-[10px] uppercase tracking-wider">
-                EXAMPLE / RECENT LEGACY
-              </div>
-              <span className="text-[10px] font-mono text-amber-400/70">{guests.length} Leaves</span>
-            </div>
 
-            <div className="flex items-center gap-3 bg-[#05070C]/80 rounded-xl p-2.5 border border-amber-500/20">
-              <div className="w-12 h-12 shrink-0 flex items-center justify-center">
-                <img src="/gold-leaf.png" alt="Leaf Preview" className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
-              </div>
-              <div className="overflow-hidden">
-                <h4 className="text-xs font-bold text-amber-100 truncate">
-                  {latestGuest ? latestGuest.name : 'Dr. A. Kumar'}
-                </h4>
-                <p className="text-[10px] text-amber-300/80 truncate">
-                  {latestGuest ? latestGuest.designation : 'Chief Guest'}
-                </p>
-                <span className="text-[9px] font-mono text-amber-400/50 block">
-                  {latestGuest ? latestGuest.eventDate : '07 August 2026'}
-                </span>
-              </div>
-            </div>
-          </div>
 
           {/* Card 2: INTERACTIVE KIOSK WORKFLOW PANEL */}
           <div className="glass-panel rounded-2xl p-3 border border-amber-500/40 shadow-2xl flex-1 flex flex-col justify-center min-h-[220px]">
