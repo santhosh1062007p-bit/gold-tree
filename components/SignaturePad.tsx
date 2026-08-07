@@ -57,13 +57,25 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
     return () => window.removeEventListener('resize', initCanvas);
   }, [initCanvas]);
 
-  const getCanvasPoint = (e: React.PointerEvent<HTMLCanvasElement>): Point | null => {
+  const getCanvasPoint = (e: React.PointerEvent<HTMLCanvasElement> | React.MouseEvent<HTMLCanvasElement>): Point | null => {
     const canvas = canvasRef.current;
     if (!canvas) return null;
     const rect = canvas.getBoundingClientRect();
     return {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
+    };
+  };
+
+  const getTouchPoint = (e: React.TouchEvent<HTMLCanvasElement>): Point | null => {
+    const canvas = canvasRef.current;
+    if (!canvas) return null;
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    if (!touch) return null;
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top,
     };
   };
 
@@ -120,14 +132,74 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
     }
   };
 
-  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
+  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement> | React.MouseEvent<HTMLCanvasElement>) => {
     if (!isDrawing) return;
     soundSystem.playStrokeEnd();
     try {
-      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+      if ('pointerId' in e) {
+        (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+      }
     } catch {
       // Ignore
     }
+    setIsDrawing(false);
+  };
+
+  // --- NATIVE TOUCH HANDLERS (Fallback for specific Touch/iPad devices) ---
+  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (isSubmitting) return;
+    const point = getTouchPoint(e);
+    if (!point) return;
+
+    setIsDrawing(true);
+    soundSystem.playStrokeStart();
+    pointsRef.current = [point];
+    strokesCountRef.current += 1;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    ctx.beginPath();
+    ctx.moveTo(point.x, point.y);
+    ctx.arc(point.x, point.y, 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFD700';
+    ctx.fill();
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!isDrawing || isSubmitting) return;
+    const point = getTouchPoint(e);
+    if (!point) return;
+
+    const points = pointsRef.current;
+    points.push(point);
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    if (points.length >= 2) {
+      const p1 = points[points.length - 2];
+      const p2 = points[points.length - 1];
+      const midPoint = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+      ctx.stroke();
+    }
+
+    if (!hasSignature && strokesCountRef.current > 0) {
+      setHasSignature(true);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDrawing) return;
+    soundSystem.playStrokeEnd();
     setIsDrawing(false);
   };
 
@@ -199,6 +271,15 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
+              onMouseDown={handlePointerDown as any}
+              onMouseMove={handlePointerMove as any}
+              onMouseUp={handlePointerUp as any}
+              onMouseLeave={handlePointerUp as any}
+              style={{ touchAction: 'none' }}
               className="w-full h-full cursor-crosshair touch-none"
             />
 
